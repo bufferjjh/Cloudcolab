@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<head>
+  <title>CloudColab</title>
+  <link rel="icon" type="image/png" href="https://img.icons8.com/nolan/96/cloud.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script defer src="/socket.io/socket.io.js"></script>
+  <script defer src="./scripts/index.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    font-family: 'Exo', sans-serif;
+}
+
+
+.context {
+    width: 100%;
+    position: absolute;
+    top:700px;
+
+}
+
+.context h1{
+    text-align: center;
+    color: #fff;
+    font-size: 50px;
+}
+
+
+.area{
+    background: #4e54c8;
+    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+    width: 100%;
+    height:700px;
+}
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+
+#content_div {
+  position: absolute;
+  display: block;
+  height: 700px;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  text-align: center;
+  color: white;
+}
+#image_div {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  background-color: white;
+  border-radius: 50%;
+}
+#img_logo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+.linkButton {
+  position : absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 50px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 50px;
+  color: white;
+  font-family: 'Exo', sans-serif;
+  font-size: 17px;
+  cursor: pointer;
+  transition: .5s;
+}
+.linkButton:Hover {
+  background-color: white;
+}
+#activeGameDes {
+  position: absolute;
+  left: 0px;
+  top: 700px;
+  width: 100%;
+  height: 200px;
+}
+#active_games {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 180px;
+  max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items : middle;
+}
+.activeChatSession {
+  position: relative;
+  display: block;
+  width: 270px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #4c63fc;
+  border-radius: 50px;
+  text-align: center;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: .3s;
+}
+.activeChatSession:Hover {
+  width: 275px;
+}
+.fillerblock {
+  position: relative;
+  display: block;
+  width: 270px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #b8ad91;
+  border-radius: 50px;
+  margin-left: 15px;
+}
+
+#footer {
+  position: relative;
+  width: 100%;
+  height: 55px;
+  background-color: black;
+}
+#refresh_rooms {
+  position : fixed;
+  left: 10px;
+  bottom: 10px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: .4s;
+}
+#refresh_rooms:Hover {
+  width: 65px;
+  height: 65px;
+  left: 7.5px;
+  bottom: 7.5px;
+}
+#viewRecent {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 150px;
+  height: 40px;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 60px;
+  background: linear-gradient(to right, #52A0FD 0%, #00e2fa 80%, #00e2fa 100%);
+  border: none;
+  color: white;
+  transition: .3s;
+  cursor: pointer;
+}
+#viewRecent:Hover {
+  width: 155px;
+  right: 8px;
+}
+</style>
+<body>
+
+   <div class="area" >
+      <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <div id="content_div">
+          <div id="image_div">
+            <img id="img_logo" src="https://img.icons8.com/nolan/96/cloud.png"/>
+          </div>
+          <p style=" position: absolute;top: 260px; font-size: 20px; ">
+            Join and create discussion rooms without registration with ease using CloudColab. CloudColab was inspired from the value of communication and the spread of ideas.
+            CloudColab was designed to be fast, simple, and easy to use. Users on this site can freely create and join discussion sessions of any topic. We hope users use this platform to learn and share ideas.
+          </p>
+          <a href="join.html"><input style="top: 470px;"type="button" class="linkButton" value="Join Room"/></a>
+          <a href="admin.html"><input style="top: 550px;"type="button" class="linkButton" value="Create Room"/></a>
+        </div>
+   </div >
+   <div id="activeGameDes">
+     <center><h1 style=" position: relative; top: 30px; font-size: 50px;">Active Rooms</h1></center>
+     <center><p id="numGames"style="position: relative; font-family: 'Roboto', sans-serif; top: 50px; color: #0cf590">⦿ 55 active rooms</p></center>
+   </div>
+   <div id="active_games">
+   </div>
+   <img id="refresh_rooms"src="https://img.icons8.com/flat_round/128/000000/synchronize.png" onclick="refresh_display()"/>
+   <a href="recent.html"><input id="viewRecent" type="button" value="View Recent"/></a>
+</body>
+</html>

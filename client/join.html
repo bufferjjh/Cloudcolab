@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+  <head>
+    <title>CloudColab</title>
+    <link rel="icon" type="image/png" href="./images/icon.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="./scripts/join.js"></script>
+    <script defer src="./scripts/throwMSG.js"></script>
+    <link rel="stylesheet" type="text/css" href="./scripts/throwMSG.css">
+  </head>
+  <style>
+  body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 12s ease infinite;
+  }
+  ::placeholder {
+    color: #98aab8;
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #98aab8;
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: #98aab8;
+  }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  #content_div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 370px;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: white;
+  }
+  #des_text {
+    top: 23px;
+    position: relative;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+  }
+  .textField {
+    position : absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 2px solid white;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    text-align: center;
+    padding-bottom: 10px;
+    color : white;
+    font-family: 'Open Sans', sans-serif;
+    width: 200px;
+    transition: .3s;
+  }
+  .textField:Hover {
+    width: 215px;
+  }
+  #submit_button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width : 200px;
+    height: 40px;
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 8px;
+    top: 270px;
+    color : white;
+    transition: .5s;
+    cursor: pointer;
+  }
+  #submit_button:Hover {
+    background-color: white;
+  }
+  </style>
+  <body>
+    <div id="content_div">
+      <p id="des_text">Join Chat Session</p>
+      <input style="top:120px;" id="username" type="text" class="textField" placeholder="Username"/>
+      <input style="top:200px;" id="roomcode" type="text" class="textField" placeholder="Room Code"/>
+      <input id="submit_button" type="button" value="Enter" onclick="attempt_join();"/>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<head>
+  <title>Recent Chats</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script defer src="/socket.io/socket.io.js"></script>
+  <script defer src="./scripts/recent.js"></script>
+</head>
+<style>
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+#rooms_display {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 80px;
+  max-width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.recentChatSession {
+  position: relative;
+  display: block;
+  width: 270px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #4c63fc;
+  border-radius: 50px;
+  text-align: center;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: .3s;
+}
+.recentChatSession:Hover {
+  width: 275px;
+}
+.fillerblock {
+  position: relative;
+  display: block;
+  width: 270px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #b8ad91;
+  border-radius: 50px;
+  margin-left: 15px;
+}
+#des {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 200px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+</style>
+<body>
+ <center><h1 style=" position: relative; top: 10px; font-size: 50px;">Recent Rooms</h1></center>
+ <center><p id="numGames"style="position: relative; font-family: 'Roboto', sans-serif; top: 10px; color: #f58442">⦿ 55 recent rooms</p></center>
+ <div id="rooms_display"></div>
+ <div id="des">Select boxes to view discussions</div>
+</body>
+</html>
